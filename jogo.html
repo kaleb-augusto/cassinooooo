@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+     <link rel="stylesheet" href="css/jogo.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- SLOT PRINCIPAL -->
+    <div class="slot-box">
+        <div class="reels">
+            <span id="r1">🍒</span>
+            <span id="r2">🍋</span>
+            <span id="r3">7️⃣</span>
+        </div>
+        <button id="spinBtn">GIRAR</button>
+    </div>
+
+    <!-- BARRA INFERIOR -->
+    <div class="info-bar">
+
+        <div class="saldo">
+            💰 <span id="coins">100</span>
+            <span class="shop-icon" onclick="openShop()">🛒</span>
+        </div>
+
+        <div class="bet-control">
+            🎯
+            <button onclick="changeBet(-1)">-</button>
+            <span id="betValue">10</span>
+            <button onclick="changeBet(1)">+</button>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- LOJA -->
+<div class="shop" id="shop">
+    <div class="shop-content">
+        <h2>Recarregar moedas</h2>
+        <button onclick="buyCoins(100)">100 moedas</button>
+        <button onclick="buyCoins(500)">500 moedas</button>
+        <button onclick="buyCoins(1000)">1000 moedas</button>
+        <button class="close" onclick="closeShop()">Fechar</button>
+    </div>
+</div>
+
+</body>
+
+<script>
+
+let coins = 100
+let bet = 10
+
+const symbols = ["🍒","🍋","🍇","7️⃣","⭐"]
+
+function updateCoins(){
+    document.getElementById("coins").innerText = coins
+}
+
+function changeBet(value){
+    bet += value
+    if(bet < 1) bet = 1
+    document.getElementById("betValue").innerText = bet
+}
+
+
+function spin(){
+
+    if(coins < bet){
+        alert("Sem moedas!")
+        return
+    }
+
+    coins -= bet
+    updateCoins()
+
+    let spins = 0
+    const maxSpins = 20  // quanto maior, mais tempo gira
+
+    const interval = setInterval(()=>{
+
+        const r1 = symbols[Math.floor(Math.random()*symbols.length)]
+        const r2 = symbols[Math.floor(Math.random()*symbols.length)]
+        const r3 = symbols[Math.floor(Math.random()*symbols.length)]
+
+        document.getElementById("r1").innerText = r1
+        document.getElementById("r2").innerText = r2
+        document.getElementById("r3").innerText = r3
+
+        spins++
+
+        if(spins >= maxSpins){
+
+            clearInterval(interval)
+
+            // Resultado final
+            const final1 = symbols[Math.floor(Math.random()*symbols.length)]
+            const final2 = symbols[Math.floor(Math.random()*symbols.length)]
+            const final3 = symbols[Math.floor(Math.random()*symbols.length)]
+
+            document.getElementById("r1").innerText = final1
+            document.getElementById("r2").innerText = final2
+            document.getElementById("r3").innerText = final3
+
+            if(final1 === final2 && final2 === final3){
+                const prize = bet * 5
+                coins += prize
+                updateCoins()
+                setTimeout(()=> alert("JACKPOT +" + prize), 100)
+            }
+        }
+
+    }, 80) // velocidade da animação
+}
+
+
+document.getElementById("spinBtn").addEventListener("click", spin)
+
+/* ===== LOJA ===== */
+
+function openShop(){
+    document.getElementById("shop").style.display = "flex"
+}
+
+function closeShop(){
+    document.getElementById("shop").style.display = "none"
+}
+
+function buyCoins(amount){
+    coins += amount
+    updateCoins()
+    closeShop()
+}
+
+updateCoins()
+
+</script>
+</html>
