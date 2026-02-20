@@ -1,0 +1,108 @@
+body{
+    margin:0;
+    height:100vh;
+    background: radial-gradient(circle,#0f1f18,#000);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Arial;
+    color:white;
+}
+
+.container{
+    text-align:center;
+}
+
+/* SLOT PRINCIPAL */
+.slot-box{
+    background:#111;
+    padding:50px 80px;
+    border-radius:30px;
+    box-shadow:0 0 40px rgba(0,255,150,0.3);
+}
+
+.reels{
+    font-size:120px;
+    letter-spacing:30px;
+    margin-bottom:30px;
+}
+
+#spinBtn{
+    padding:15px 50px;
+    font-size:22px;
+    background:#2ecc71;
+    border:none;
+    border-radius:15px;
+    cursor:pointer;
+}
+
+/* BARRA INFERIOR */
+.info-bar{
+    margin-top:25px;
+    display:flex;
+    justify-content:center;
+    gap:60px;
+    align-items:center;
+}
+
+/* SALDO */
+.saldo{
+    font-size:18px;
+}
+
+.shop-icon{
+    cursor:pointer;
+    margin-left:8px;
+    font-size:18px;
+}
+
+/* CONTROLE DE APOSTA (MENOR) */
+.bet-control{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:16px;
+}
+
+.bet-control button{
+    width:35px;
+    height:35px;
+    border:none;
+    border-radius:8px;
+    background:#2ecc71;
+    cursor:pointer;
+}
+
+/* LOJA */
+.shop{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
+
+.shop-content{
+    background:#111;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+}
+
+.shop-content button{
+    display:block;
+    margin:10px auto;
+    padding:10px 30px;
+    background:#2ecc71;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.close{
+    background:#555 !important;
+}

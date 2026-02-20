@@ -1,0 +1,63 @@
+body{
+    margin:0;
+    background: radial-gradient(circle,#0b0b0b,#000);
+    font-family:Segoe UI;
+    color:white;
+    text-align:center;
+}
+
+.container{
+    margin-top:40px;
+}
+
+h1{
+    font-size:60px;
+    color:#00c2ff;
+}
+
+h2{
+    color:#aaa;
+}
+
+.foto{
+    width:260px;
+    border-radius:20px;
+    margin:25px 0;
+    box-shadow:0 0 40px #00c2ff;
+}
+
+button{
+    padding:20px 60px;
+    font-size:28px;
+    border:none;
+    border-radius:12px;
+    background:#00c2ff;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 0 25px #00c2ff;
+}
+
+button:hover{
+    transform:scale(1.05);
+    background:#00a2d6;
+}
+.player{
+    width: 230px;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 20px; /* quadrada com cantos suaves */
+    margin: 25px auto;
+    display: block;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+}
+
+
+.container{
+    height: 100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
